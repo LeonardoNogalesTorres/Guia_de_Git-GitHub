@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clonar y Subir Avances en Git</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <header>
+        <h1>Clonar y Flujo de Trabajo en Git</h1>
+        <p>Aprende a clonar un repositorio y manejar el envío de cambios paso a paso (en 'main' y con ramas).</p>
+        <a href="index.html" class="btn btn-secondary">← Volver al Inicio</a>
+    </header>
+
+    <div class="container-single">
+
+        <!-- FASE 1: CLONAR Y PREPARAR -->
+        <h2 style="color: var(--accent-color); border-bottom: 1px solid var(--border-color); padding-bottom: 0.5rem;">
+            📌 Fase 1: Clonar y Preparar el Proyecto
+        </h2>
+
+        <section class="step-card">
+            <span class="step-number">Paso 1</span>
+            <h2>Obtener la URL del Repositorio</h2>
+            <p>Ve al proyecto en GitHub, haz clic en el botón verde <strong>Code</strong> y copia la URL que termina en <code>.git</code> (HTTPS).</p>
+        </section>
+
+        <section class="step-card">
+            <span class="step-number">Paso 2</span>
+            <h2>Clonar el proyecto a tu equipo</h2>
+            <p>Abre tu terminal en la carpeta donde quieras guardar el proyecto y ejecuta:</p>
+            <div class="code-block">
+                <code>git clone https://github.com/usuario/nombre-del-proyecto.git</code>
+                <span class="comment"># Descarga una copia completa del código e historial a tu máquina.</span>
+            </div>
+        </section>
+
+        <section class="step-card">
+            <span class="step-number">Paso 3</span>
+            <h2>Entrar a la carpeta y abrir en VS Code</h2>
+            <p>Usa la terminal para acceder al directorio del repositorio recien clonado:</p>
+            <div class="code-block">
+                <code>cd nombre-del-proyecto</code>
+                <span class="comment"># Entra a la carpeta del proyecto.</span>
+                <code>code .</code>
+                <span class="comment"># Abre el proyecto directamente en Visual Studio Code.</span>
+            </div>
+        </section>
+
+
+        <!-- FASE 2: VARIANTE A (MAIN) -->
+        <h2 style="color: var(--accent-color); border-bottom: 1px solid var(--border-color); padding-bottom: 0.5rem; margin-top: 3rem;">
+            🟢 Variante A: Flujo Directo en 'main' (Flujo Simple)
+        </h2>
+        <p style="margin-bottom: 1.5rem; color: #8b949e;">Recomendado para proyectos individuales, tareas personales o entregas rápidas.</p>
+
+        <section class="step-card">
+            <span class="step-number">Paso A.1</span>
+            <h2>Descargar cambios recientes (Pull)</h2>
+            <p>Antes de empezar a escribir código, asegúrate de tener la versión más reciente del servidor:</p>
+            <div class="code-block">
+                <code>git pull origin main</code>
+                <span class="comment"># Trae e integra lo que esté subido en GitHub antes de trabajar.</span>
+            </div>
+        </section>
+
+        <section class="step-card">
+            <span class="step-number">Paso A.2</span>
+            <h2>Guardar tus avances localmente</h2>
+            <p>Realiza tus cambios en el código y guarda una instantánea localmente:</p>
+            <div class="code-block">
+                <code>git status</code>
+                <span class="comment"># Muestra los archivos que has creado o modificado.</span>
+                <code>git add .</code>
+                <span class="comment"># Prepara todos los archivos editados.</span>
+                <code>git commit -m "Actualización del módulo de login"</code>
+                <span class="comment"># Registra el estado de tus avances en el historial local.</span>
+            </div>
+        </section>
+
+        <section class="step-card">
+            <span class="step-number">Paso A.3</span>
+            <h2>Subir los avances a GitHub</h2>
+            <p>Envía tus confirmaciones locales hacia el repositorio remoto:</p>
+            <div class="code-block">
+                <code>git push origin main</code>
+                <span class="comment"># Publica tus cambios en la rama principal de GitHub.</span>
+            </div>
+        </section>
+
+
+        <!-- FASE 3: VARIANTE B (RAMAS) -->
+        <h2 style="color: var(--accent-color); border-bottom: 1px solid var(--border-color); padding-bottom: 0.5rem; margin-top: 3rem;">
+            🌿 Variante B: Flujo con Ramas Secundarias (Trabajo Profesional / En Equipo)
+        </h2>
+        <p style="margin-bottom: 1.5rem; color: #8b949e;">Ideal para no tocar el código estable de <code>main</code> mientras desarrollas nuevas características.</p>
+
+        <section class="step-card">
+            <span class="step-number">Paso B.1</span>
+            <h2>Crear y cambiar a una nueva rama</h2>
+            <p>Crea un espacio de trabajo aislado para la funcionalidad en la que vas a trabajar:</p>
+            <div class="code-block">
+                <code>git switch -c feature/nueva-interfaz</code>
+                <span class="comment"># Crea la rama 'feature/nueva-interfaz' y te traslada a ella.</span>
+            </div>
+        </section>
+
+        <section class="step-card">
+            <span class="step-number">Paso B.2</span>
+            <h2>Trabajar y guardar avances en la rama</h2>
+            <p>Realiza los cambios necesarios en tu código. Los commits quedarán aislados en tu rama activa:</p>
+            <div class="code-block">
+                <code>git add .</code>
+                <code>git commit -m "Se diseña la estructura del menú"</code>
+            </div>
+        </section>
+
+        <section class="step-card">
+            <span class="step-number">Paso B.3</span>
+            <h2>Subir la rama secundaria a GitHub</h2>
+            <p>Sube la rama creada al servidor remoto para respaldarla o solicitar revisión:</p>
+            <div class="code-block">
+                <code>git push -u origin feature/nueva-interfaz</code>
+                <span class="comment"># Sube la rama por primera vez a GitHub y establece vinculación.</span>
+            </div>
+        </section>
+
+        <section class="step-card">
+            <span class="step-number">Paso B.4</span>
+            <h2>Integrar (Merge) la rama a 'main'</h2>
+            <p>Una vez terminada y probada la funcionalidad, fusiona la rama en <code>main</code>:</p>
+            <div class="code-block">
+                <code>git switch main</code>
+                <span class="comment"># Cambias a la rama principal.</span>
+                <code>git pull origin main</code>
+                <span class="comment"># Aseguras que tu rama principal esté al día.</span>
+                <code>git merge feature/nueva-interfaz</code>
+                <span class="comment"># Fusionas el código de tu rama secundaria dentro de main.</span>
+                <code>git push origin main</code>
+                <span class="comment"># Subes la rama main actualizada a GitHub.</span>
+            </div>
+        </section>
+
+    </div>
+
+</body>
+</html>
