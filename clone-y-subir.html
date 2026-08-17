@@ -40,7 +40,7 @@
         <section class="step-card">
             <span class="step-number">Paso 3</span>
             <h2>Entrar a la carpeta y abrir en VS Code</h2>
-            <p>Usa la terminal para acceder al directorio del repositorio recien clonado:</p>
+            <p>Usa la terminal para acceder al directorio del repositorio recién clonado:</p>
             <div class="code-block">
                 <code>cd nombre-del-proyecto</code>
                 <span class="comment"># Entra a la carpeta del proyecto.</span>
@@ -91,16 +91,16 @@
         </section>
 
 
-        <!-- FASE 3: VARIANTE B (RAMAS) -->
+        <!-- FASE 3: VARIANTE B (RAMAS Y PULL REQUEST) -->
         <h2 style="color: var(--accent-color); border-bottom: 1px solid var(--border-color); padding-bottom: 0.5rem; margin-top: 3rem;">
-            🌿 Variante B: Flujo con Ramas Secundarias (Trabajo Profesional / En Equipo)
+            🌿 Variante B: Flujo con Ramas Secundarias y Pull Request
         </h2>
-        <p style="margin-bottom: 1.5rem; color: #8b949e;">Ideal para no tocar el código estable de <code>main</code> mientras desarrollas nuevas características.</p>
+        <p style="margin-bottom: 1.5rem; color: #8b949e;">Ideal para mantener el código principal intacto hasta revisar los cambios.</p>
 
         <section class="step-card">
             <span class="step-number">Paso B.1</span>
             <h2>Crear y cambiar a una nueva rama</h2>
-            <p>Crea un espacio de trabajo aislado para la funcionalidad en la que vas a trabajar:</p>
+            <p>Crea un espacio aislante para desarrollar tu nueva característica:</p>
             <div class="code-block">
                 <code>git switch -c feature/nueva-interfaz</code>
                 <span class="comment"># Crea la rama 'feature/nueva-interfaz' y te traslada a ella.</span>
@@ -109,37 +109,62 @@
 
         <section class="step-card">
             <span class="step-number">Paso B.2</span>
-            <h2>Trabajar y guardar avances en la rama</h2>
-            <p>Realiza los cambios necesarios en tu código. Los commits quedarán aislados en tu rama activa:</p>
+            <h2>Guardar avances con Título y Descripción</h2>
+            <p>Puedes estructurar el mensaje para que GitHub extraiga automáticamente el título y cuerpo del Pull Request usando doble <code>-m</code>:</p>
             <div class="code-block">
                 <code>git add .</code>
-                <code>git commit -m "Se diseña la estructura del menú"</code>
+                <code>git commit -m "Se diseña la vista de inicio" -m "Descripción: Se incluyeron botones de navegación, hoja de estilos CSS y responsividad para móviles."</code>
+                <span class="comment"># El primer -m será el Título del PR y el segundo -m la Descripción detallada.</span>
             </div>
         </section>
 
         <section class="step-card">
             <span class="step-number">Paso B.3</span>
-            <h2>Subir la rama secundaria a GitHub</h2>
-            <p>Sube la rama creada al servidor remoto para respaldarla o solicitar revisión:</p>
+            <h2>Subir la rama a GitHub</h2>
+            <p>Publica tu rama en el servidor remoto:</p>
             <div class="code-block">
                 <code>git push -u origin feature/nueva-interfaz</code>
-                <span class="comment"># Sube la rama por primera vez a GitHub y establece vinculación.</span>
+                <span class="comment"># Sube la rama y establece vinculación con origin.</span>
             </div>
         </section>
 
         <section class="step-card">
             <span class="step-number">Paso B.4</span>
-            <h2>Integrar (Merge) la rama a 'main'</h2>
-            <p>Una vez terminada y probada la funcionalidad, fusiona la rama en <code>main</code>:</p>
+            <h2>Crear el Pull Request (PR)</h2>
+            <p>Tienes dos formas de abrir la solicitud de extracción para que el administrador la revise:</p>
+            
+            <h3 style="color: var(--accent-color); font-size: 1rem; margin-top: 1rem;">Opción 1: Desde la Web de GitHub (Recomendado)</h3>
+            <ol style="padding-left: 1.2rem; line-height: 1.6;">
+                <li>Entra al repositorio en GitHub. Verás un banner amarillo que dice <strong>"Compare & pull request"</strong>. Haz clic en él.</li>
+                <li>Escribe el <strong>Title</strong> (Título del cambio) y en el cuadro grande la <strong>Description</strong> (Explicación de lo que hiciste, pruebas realizadas o notas al administrador).</li>
+                <li>Haz clic en el botón verde <strong>"Create pull request"</strong>.</li>
+            </ol>
+
+            <h3 style="color: var(--accent-color); font-size: 1rem; margin-top: 1rem;">Opción 2: Desde la Terminal (GitHub CLI)</h3>
+            <p>Si tienes instalada la herramienta <code>gh</code> (GitHub CLI), puedes hacer todo sin salir de la consola:</p>
+            <div class="code-block">
+                <code>gh pr create --title "Se diseña la vista de inicio" --body "Se incluyeron botones de navegación y responsive design."</code>
+                <span class="comment"># Crea el PR directamente asignando Título y Descripción por comandos.</span>
+            </div>
+        </section>
+
+        <section class="step-card">
+            <span class="step-number">Paso B.5</span>
+            <h2>Fusionar (Merge) el Pull Request</h2>
+            <p>Una vez revisados los cambios, el Pull Request se integra en la rama principal:</p>
+
+            <h3 style="color: var(--accent-color); font-size: 1rem; margin-top: 1rem;">Desde la Web de GitHub</h3>
+            <p>El administrador (o tú, si tienes permisos) presiona el botón verde <strong>"Merge pull request"</strong> y luego <strong>"Confirm merge"</strong>.</p>
+
+            <h3 style="color: var(--accent-color); font-size: 1rem; margin-top: 1rem;">Sincronizar cambios en tu computadora local</h3>
+            <p>Tras hacer el Merge en GitHub, vuelve a tu terminal para actualizar tu rama <code>main</code> local:</p>
             <div class="code-block">
                 <code>git switch main</code>
-                <span class="comment"># Cambias a la rama principal.</span>
+                <span class="comment"># Regresas a la rama principal.</span>
                 <code>git pull origin main</code>
-                <span class="comment"># Aseguras que tu rama principal esté al día.</span>
-                <code>git merge feature/nueva-interfaz</code>
-                <span class="comment"># Fusionas el código de tu rama secundaria dentro de main.</span>
-                <code>git push origin main</code>
-                <span class="comment"># Subes la rama main actualizada a GitHub.</span>
+                <span class="comment"># Descargas el código ya fusionado desde GitHub.</span>
+                <code>git branch -d feature/nueva-interfaz</code>
+                <span class="comment"># (Opcional) Borras la rama local que ya fue integrada.</span>
             </div>
         </section>
 
