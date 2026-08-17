@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guía Rápida de Git & GitHub</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+    <header>
+        <h1>Guía Esencial de Git & GitHub</h1>
+        <p>Aprende los comandos fundamentales para gestionar tus proyectos y ramas.</p>
+
+        <!-- Nuevos botones de navegación -->
+        <div class="header-nav">
+            <a href="comandos.html" class="btn btn-primary">📖 Diccionario de Comandos</a>
+            <a href="flujo-completo.html" class="btn btn-secondary">🚀 Guía: Clone a Push & Pull</a>
+            <a href="crear-y-subir.html" class="btn btn-secondary">💻 Crear en PC y Subir a GitHub</a>
+        </div>
+    </header>
+
+    <div class="container">
+        <!-- Navegación lateral -->
+        <nav class="sidebar">
+            <ul>
+                <li><a href="#instalacion">1. Configuración Inicial</a></li>
+                <li><a href="#flujo-basico">2. Flujo Básico</a></li>
+                <li><a href="#ramas">3. Manejo de Ramas (Branches)</a></li>
+                <li><a href="#remote">4. Conectar con GitHub</a></li>
+            </ul>
+        </nav>
+
+        <!-- Contenido principal -->
+        <main class="content">
+
+            <section id="instalacion">
+                <h2>1. Configuración Inicial</h2>
+                <p>Lo primero que debes hacer tras instalar Git es identificar tu usuario y correo:</p>
+                <div class="code-block">
+                    <code>git config --global user.name "Tu Nombre"</code>
+                    <code>git config --global user.email "tu@email.com"</code>
+                </div>
+            </section>
+
+            <section id="flujo-basico">
+                <h2>2. Flujo de Trabajo Básico</h2>
+                <p>Pasos cotidianos para guardar cambios localmente:</p>
+
+                <div class="card">
+                    <h3>Inicializar un proyecto</h3>
+                    <div class="code-block"><code>git init</code></div>
+                </div>
+
+                <div class="card">
+                    <h3>Guardar cambios (Staging & Commit)</h3>
+                    <div class="code-block">
+                        <code>git add .</code>
+                        <span class="comment"># Prepara todos los archivos modificados</span>
+                        <code>git commit -m "Mensaje descriptivo del cambio"</code>
+                        <span class="comment"># Guarda una foto del proyecto</span>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h3>Verificar el estado</h3>
+                    <div class="code-block"><code>git status</code></div>
+                </div>
+            </section>
+
+            <section id="ramas">
+                <h2>3. Manejo de Ramas (Branches)</h2>
+                <p>Las ramas te permiten trabajar en nuevas funciones sin alterar el código principal
+                    (<code>main</code>).</p>
+
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Acción</th>
+                            <th>Comando</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Crear una nueva rama</td>
+                            <td><code>git branch nombre-rama</code></td>
+                        </tr>
+                        <tr>
+                            <td>Cambiar a una rama</td>
+                            <td><code>git switch nombre-rama</code></td>
+                        </tr>
+                        <tr>
+                            <td>Crear y cambiar a la vez</td>
+                            <td><code>git checkout -b nombre-rama</code></td>
+                        </tr>
+                        <tr>
+                            <td>Fusionar rama actual con otra</td>
+                            <td><code>git merge nombre-rama</code></td>
+                        </tr>
+                        <tr>
+                            <td>Eliminar una rama</td>
+                            <td><code>git branch -d nombre-rama</code></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+
+            <section id="remote">
+                <h2>4. Conectar y Subir a GitHub</h2>
+                <p>Para sincronizar tu repositorio local con la nube:</p>
+                <div class="code-block">
+                    <code>git remote add origin https://github.com/usuario/repositorio.git</code>
+                    <span class="comment"># Vincula el repositorio remoto</span>
+                    <code>git branch -M main</code>
+                    <span class="comment"># Asegura que la rama principal se llame main</span>
+                    <code>git push -u origin main</code>
+                    <span class="comment"># Sube tus cambios por primera vez</span>
+                </div>
+            </section>
+
+        </main>
+    </div>
+
+</body>
+
+</html>

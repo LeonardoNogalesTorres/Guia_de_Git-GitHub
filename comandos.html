@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diccionario Completo de Comandos Git</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <header>
+        <h1>Diccionario de Comandos Git</h1>
+        <p>Referencia técnica con combinaciones, banderas y casos de uso prácticos.</p>
+        <a href="index.html" class="btn btn-secondary">← Volver al Inicio</a>
+    </header>
+
+    <div class="container-single">
+
+        <!-- 1. CONFIGURACIÓN -->
+        <section>
+            <h2>⚙️ 1. Configuración e Identidad</h2>
+            
+            <div class="card">
+                <h3>Establecer usuario y correo global</h3>
+                <div class="code-block">
+                    <code>git config --global user.name "Tu Nombre"</code>
+                    <code>git config --global user.email "tu@email.com"</code>
+                    <span class="comment"># Identifica la autoría de tus commits en todo el sistema.</span>
+                </div>
+            </div>
+
+            <div class="card">
+                <h3>Listar y editar configuraciones</h3>
+                <div class="code-block">
+                    <code>git config --list</code>
+                    <span class="comment"># Muestra todas las variables de configuración activas.</span>
+                    <code>git config --global core.editor "code --wait"</code>
+                    <span class="comment"># Establece VS Code como editor predeterminado de Git.</span>
+                    <code>git config --global init.defaultBranch main</code>
+                    <span class="comment"># Configura 'main' como la rama por defecto para nuevos repositorios.</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- 2. INICIALIZACIÓN Y CLONADO -->
+        <section>
+            <h2>🚀 2. Creación y Clonado</h2>
+
+            <div class="card">
+                <h3>Inicializar repositorio local</h3>
+                <div class="code-block">
+                    <code>git init</code>
+                    <span class="comment"># Convierte el directorio actual en un repositorio Git (.git).</span>
+                </div>
+            </div>
+
+            <div class="card">
+                <h3>Clonar repositorios remotamente</h3>
+                <div class="code-block">
+                    <code>git clone https://github.com/usuario/repo.git</code>
+                    <span class="comment"># Descarga una copia local del repositorio remoto.</span>
+                    <code>git clone -b rama-especifica https://github.com/usuario/repo.git</code>
+                    <span class="comment"># Clona directamente una rama específica.</span>
+                    <code>git clone --depth 1 https://github.com/usuario/repo.git</code>
+                    <span class="comment"># Clona solo el último commit (descarga ligera y rápida).</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. ESTADO Y CONFIRMACIONES -->
+        <section>
+            <h2>📝 3. Estado, Cambios y Commits</h2>
+
+            <div class="card">
+                <h3>Ver estado de los archivos</h3>
+                <div class="code-block">
+                    <code>git status</code>
+                    <span class="comment"># Muestra archivos modificados, en staging o no rastreados.</span>
+                    <code>git status -s</code>
+                    <span class="comment"># Muestra el estado en formato corto/resumido.</span>
+                </div>
+            </div>
+
+            <div class="card">
+                <h3>Añadir al área de preparación (Staging)</h3>
+                <div class="code-block">
+                    <code>git add nombre-archivo.txt</code>
+                    <span class="comment"># Añade un archivo específico.</span>
+                    <code>git add .</code>
+                    <span class="comment"># Añade todos los cambios del directorio actual.</span>
+                    <code>git add -p</code>
+                    <span class="comment"># Modo interactivo: permite añadir fragmentos específicos de código.</span>
+                </div>
+            </div>
+
+            <div class="card">
+                <h3>Confirmar cambios (Commit)</h3>
+                <div class="code-block">
+                    <code>git commit -m "Mensaje descriptivo"</code>
+                    <span class="comment"># Guarda una foto del área de preparación con un mensaje.</span>
+                    <code>git commit -am "Añade y confirma en un solo paso"</code>
+                    <span class="comment"># Para archivos ya rastreados (salta 'git add').</span>
+                    <code>git commit --amend -m "Nuevo mensaje corregido"</code>
+                    <span class="comment"># Sobrescribe el último commit realizado.</span>
+                    <code>git commit --amend --no-edit</code>
+                    <span class="comment"># Añade cambios olvidados al último commit sin alterar su mensaje.</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. RAMAS Y FLUJO DE TRABAJO -->
+        <section>
+            <h2>🌿 4. Manejo de Ramas (Branches)</h2>
+
+            <div class="card">
+                <h3>Listar ramas</h3>
+                <div class="code-block">
+                    <code>git branch</code>
+                    <span class="comment"># Lista las ramas locales.</span>
+                    <code>git branch -a</code>
+                    <span class="comment"># Lista ramas locales y remotas.</span>
+                    <code>git branch -v</code>
+                    <span class="comment"># Muestra el último commit de cada rama.</span>
+                </div>
+            </div>
+
+            <div class="card">
+                <h3>Crear, renombrar y cambiar de rama</h3>
+                <div class="code-block">
+                    <code>git branch nueva-rama</code>
+                    <span class="comment"># Crea una nueva rama.</span>
+                    <code>git switch nueva-rama</code>
+                    <span class="comment"># Cambia a la rama especificada (Sustituye a 'git checkout').</span>
+                    <code>git switch -c nueva-rama</code>
+                    <span class="comment"># Crea y cambia a la nueva rama en un solo paso.</span>
+                    <code>git branch -m nombre-viejo nombre-nuevo</code>
+                    <span class="comment"># Renombra una rama existente.</span>
+                </div>
+            </div>
+
+            <div class="card">
+                <h3>Fusionar e Integrar (Merge & Rebase)</h3>
+                <div class="code-block">
+                    <code>git merge nombre-rama</code>
+                    <span class="comment"># Fusiona la rama especificada dentro de la rama actual.</span>
+                    <code>git merge --no-ff nombre-rama</code>
+                    <span class="comment"># Fuerza la creación de un commit de fusión explícito.</span>
+                    <code>git rebase main</code>
+                    <span class="comment"># Reorganiza los commits de la rama actual sobre la punta de 'main'.</span>
+                    <code>git cherry-pick ID_COMMIT</code>
+                    <span class="comment"># Aplica un commit específico de otra rama a la rama actual.</span>
+                </div>
+            </div>
+
+            <div class="card">
+                <h3>Eliminar ramas</h3>
+                <div class="code-block">
+                    <code>git branch -d nombre-rama</code>
+                    <span class="comment"># Elimina la rama de forma segura (solo si ya fue fusionada).</span>
+                    <code>git branch -D nombre-rama</code>
+                    <span class="comment"># Fuerza la eliminación de la rama sin importar su estado.</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- 5. SINCRONIZACIÓN REMOTA -->
+        <section>
+            <h2>🌐 5. Servidores Remotos (GitHub)</h2>
+
+            <div class="card">
+                <h3>Gestionar conexiones remotas</h3>
+                <div class="code-block">
+                    <code>git remote -v</code>
+                    <span class="comment"># Lista las URLs de los repositorios remotos vinculados.</span>
+                    <code>git remote add origin https://github.com/usuario/repo.git</code>
+                    <span class="comment"># Añade una nueva vinculación remota llamada 'origin'.</span>
+                    <code>git remote set-url origin https://github.com/usuario/nuevo-repo.git</code>
+                    <span class="comment"># Cambia la URL del remoto existente.</span>
+                </div>
+            </div>
+
+            <div class="card">
+                <h3>Descargar y subir datos</h3>
+                <div class="code-block">
+                    <code>git fetch origin</code>
+                    <span class="comment"># Descarga la información del remoto sin modificar tus archivos locales.</span>
+                    <code>git pull origin main</code>
+                    <span class="comment"># Descarga y fusiona los cambios remotos en tu rama actual.</span>
+                    <code>git pull --rebase origin main</code>
+                    <span class="comment"># Descarga y reordena tus avances sobre la versión más reciente del servidor.</span>
+                    <code>git push -u origin main</code>
+                    <span class="comment"># Sube tus cambios y establece el rastreo por defecto.</span>
+                    <code>git push origin --delete nombre-rama</code>
+                    <span class="comment"># Elimina una rama en el servidor remoto de GitHub.</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- 6. INSPECCIÓN E HISTORIAL -->
+        <section>
+            <h2>📜 6. Historial y Diferencias</h2>
+
+            <div class="card">
+                <h3>Historial de confirmaciones (Log)</h3>
+                <div class="code-block">
+                    <code>git log</code>
+                    <span class="comment"># Muestra el historial completo de commits.</span>
+                    <code>git log --oneline --graph --all</code>
+                    <span class="comment"># Muestra el historial simplificado en una línea con diagrama de ramas.</span>
+                    <code>git log -n 5</code>
+                    <span class="comment"># Muestra únicamente los últimos 5 commits.</span>
+                    <code>git log --author="Nombre"</code>
+                    <span class="comment"># Filtra el historial por el autor de los cambios.</span>
+                </div>
+            </div>
+
+            <div class="card">
+                <h3>Comparación de cambios (Diff)</h3>
+                <div class="code-block">
+                    <code>git diff</code>
+                    <span class="comment"># Compara el directorio de trabajo actual con el área de staging.</span>
+                    <code>git diff --staged</code>
+                    <span class="comment"># Compara el área de staging con el último commit.</span>
+                    <code>git diff rama1..rama2</code>
+                    <span class="comment"># Muestra las diferencias entre dos ramas distintas.</span>
+                    <code>git blame archivo.js</code>
+                    <span class="comment"># Muestra quién modificó cada línea de un archivo y en qué commit.</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- 7. DESHACER Y RESTAURAR -->
+        <section>
+            <h2>⏪ 7. Cancelación y Corrección de Errores</h2>
+
+            <div class="card">
+                <h3>Descartar y restaurar cambios</h3>
+                <div class="code-block">
+                    <code>git restore archivo.html</code>
+                    <span class="comment"># Restaura un archivo al estado del último commit (borra cambios locales).</span>
+                    <code>git restore --staged archivo.html</code>
+                    <span class="comment"># Remueve el archivo del área de staging pero conserva tus modificaciones.</span>
+                </div>
+            </div>
+
+            <div class="card">
+                <h3>Resetear historial</h3>
+                <div class="code-block">
+                    <code>git reset HEAD~1</code>
+                    <span class="comment"># Deshace el último commit manteniendo tus cambios en el código.</span>
+                    <code>git reset --soft HEAD~1</code>
+                    <span class="comment"># Deshace el último commit devolviendo los cambios al área de staging.</span>
+                    <code>git reset --hard HEAD~1</code>
+                    <span class="comment"># Peligro: Deshace el último commit y elimina todos los cambios de código.</span>
+                    <code>git revert ID_COMMIT</code>
+                    <span class="comment"># Crea un nuevo commit que deshace exactamente lo hecho en un commit anterior.</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- 8. HERRAMIENTAS ÚTILES -->
+        <section>
+            <h2>📦 8. Guardado Temporal, Limpieza y Registros</h2>
+
+            <div class="card">
+                <h3>Guardado temporal (Stash)</h3>
+                <div class="code-block">
+                    <code>git stash</code>
+                    <span class="comment"># Guarda temporalmente cambios no confirmados para limpiar el espacio de trabajo.</span>
+                    <code>git stash save "Mensaje opcional"</code>
+                    <span class="comment"># Guarda con una descripción personalizada.</span>
+                    <code>git stash list</code>
+                    <span class="comment"># Muestra la lista de todos los guardados temporales.</span>
+                    <code>git stash pop</code>
+                    <span class="comment"># Aplica el último stash y lo elimina de la lista.</span>
+                    <code>git stash drop</code>
+                    <span class="comment"># Elimina el último stash guardado.</span>
+                </div>
+            </div>
+
+            <div class="card">
+                <h3>Limpieza de archivos sin rastrear</h3>
+                <div class="code-block">
+                    <code>git clean -n</code>
+                    <span class="comment"># Muestra qué archivos no rastreados se borrarían sin eliminarlos aún.</span>
+                    <code>git clean -fd</code>
+                    <span class="comment"># Elimina de forma permanente archivos y carpetas no rastreados.</span>
+                </div>
+            </div>
+
+            <div class="card">
+                <h3>Registro de acciones avanzadas (Reflog)</h3>
+                <div class="code-block">
+                    <code>git reflog</code>
+                    <span class="comment"># Muestra el historial completo de acciones del HEAD. Útil para recuperar commits o ramas borradas por error.</span>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+</body>
+</html>

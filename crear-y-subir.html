@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crear Proyecto Local y Subir a GitHub</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <header>
+        <h1>De Local a GitHub desde Cero</h1>
+        <p>Pasos para iniciar un proyecto en tu computadora y publicarlo por primera vez en GitHub.</p>
+        <a href="index.html" class="btn btn-secondary">← Volver al Inicio</a>
+    </header>
+
+    <div class="container-single">
+
+        <section class="step-card">
+            <span class="step-number">Paso 1</span>
+            <h2>Crear la carpeta y tus archivos locales</h2>
+            <p>Crea el directorio de trabajo en tu equipo y ábrelo en Visual Studio Code.</p>
+            <ul>
+                <li>Abre VS Code y ve a <strong>File > Open Folder</strong> para seleccionar tu carpeta.</li>
+                <li>Crea tus archivos iniciales (por ejemplo: <code>index.html</code>, <code>styles.css</code>, etc.).</li>
+                <li><em>Opcional:</em> Crea un archivo llamado <code>.gitignore</code> para especificar archivos que no quieras subir (como carpetas de configuración o claves).</li>
+            </ul>
+        </section>
+
+        <section class="step-card">
+            <span class="step-number">Paso 2</span>
+            <h2>Inicializar Git en la carpeta</h2>
+            <p>Abre la terminal integrada en VS Code (<code>Ctrl + ~</code> o <code>Terminal > New Terminal</code>) y ejecuta el comando para activar el control de versiones en esa carpeta:</p>
+            <div class="code-block">
+                <code>git init</code>
+                <span class="comment"># Crea la carpeta oculta .git y convierte la carpeta en un repositorio local.</span>
+            </div>
+        </section>
+
+        <section class="step-card">
+            <span class="step-number">Paso 3</span>
+            <h2>Registrar tu primer Commit local</h2>
+            <p>Prepara todos tus archivos recién creados y guarda una instantánea de tu código antes de conectar con la nube.</p>
+            <div class="code-block">
+                <code>git add .</code>
+                <span class="comment"># Prepara todos los archivos recién creados.</span>
+                <code>git commit -m "Primer commit: Estructura inicial del proyecto"</code>
+                <span class="comment"># Registra el estado inicial en el historial local.</span>
+            </div>
+        </section>
+
+        <section class="step-card">
+            <span class="step-number">Paso 4</span>
+            <h2>Crear el Repositorio en la web de GitHub</h2>
+            <p>Abre tu navegador y sigue estos pasos en tu cuenta de GitHub:</p>
+            <ol>
+                <li>Ingresa a <a href="https://github.com" target="_blank" style="color: var(--accent-color);">github.com</a> e inicia sesión.</li>
+                <li>Haz clic en el botón verde <strong>"New"</strong> o en el icono <strong>"+"</strong> (arriba a la derecha) y selecciona <strong>New repository</strong>.</li>
+                <li>Asigna un nombre a tu repositorio (ejemplo: <code>mi-primer-sitio</code>).</li>
+                <li><strong>IMPORTANTE:</strong> Deja desmarcadas las casillas de <em>Add a README file</em>, <em>Add .gitignore</em> y <em>Choose a license</em> (ya que el proyecto lo creaste localmente).</li>
+                <li>Haz clic en el botón <strong>"Create repository"</strong>.</li>
+            </ol>
+        </section>
+
+        <section class="step-card">
+            <span class="step-number">Paso 5</span>
+            <h2>Vincular y subir tu código por primera vez</h2>
+            <p>Copia y ejecuta los siguientes comandos en la terminal de VS Code para conectar tu carpeta con el repositorio vacío que acabas de crear en GitHub:</p>
+            <div class="code-block">
+                <code>git branch -M main</code>
+                <span class="comment"># Renombra la rama predeterminada a 'main'.</span>
+                <code>git remote add origin https://github.com/tu-usuario/tu-repositorio.git</code>
+                <span class="comment"># Enlaza la carpeta local con la URL de tu repositorio remoto en GitHub.</span>
+                <code>git push -u origin main</code>
+                <span class="comment"># Sube tu primer commit y guarda la vinculación predeterminada.</span>
+            </div>
+        </section>
+
+    </div>
+
+</body>
+</html>
