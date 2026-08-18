@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Desplegar en Vercel - Guía Opcional</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <header>
+        <h1>🌐 Publicar Tu Web Gratis en Vercel</h1>
+        <p>Guía opcional: Convierte tu repositorio de GitHub en una página web accesible desde cualquier lugar.</p>
+        <a href="index.html" class="btn btn-secondary">← Volver al Inicio</a>
+    </header>
+
+    <div class="container-single">
+
+        <section class="step-card">
+            <span class="step-number">Requisito Previo</span>
+            <h2>Tener tu código subido a GitHub</h2>
+            <p>Antes de comenzar, asegúrate de haber subido la carpeta de tu proyecto a un repositorio en GitHub (sea público o privado).</p>
+        </section>
+
+        <section class="step-card">
+            <span class="step-number">Paso 1</span>
+            <h2>Iniciar sesión en Vercel con GitHub</h2>
+            <p>Ingresa a la página oficial de Vercel y vincula tu cuenta:</p>
+            <ol style="padding-left: 1.2rem; line-height: 1.6;">
+                <li>Entra a <a href="https://vercel.com" target="_blank" style="color: var(--accent-color);">vercel.com</a>.</li>
+                <li>Haz clic en el botón <strong>"Sign Up"</strong> o <strong>"Log In"</strong> (arriba a la derecha).</li>
+                <li>Selecciona la opción <strong>"Continue with GitHub"</strong> e inicia sesión con tus credenciales.</li>
+            </ol>
+        </section>
+
+        <section class="step-card">
+            <span class="step-number">Paso 2</span>
+            <h2>Importar tu Repositorio</h2>
+            <p>Una vez dentro del panel principal (Dashboard) de Vercel:</p>
+            <ol style="padding-left: 1.2rem; line-height: 1.6;">
+                <li>Haz clic en el botón azul <strong>"Add New..."</strong> y selecciona <strong>"Project"</strong>.</li>
+                <li>Aparecerá un listado con todos tus repositorios de GitHub. Busca el nombre de tu proyecto.</li>
+                <li>Haz clic en el botón <strong>"Import"</strong> junto a tu repositorio.</li>
+            </ol>
+        </section>
+
+        <section class="step-card">
+            <span class="step-number">Paso 3</span>
+            <h2>Configurar y Desplegar (Deploy)</h2>
+            <p>Vercel detecta automáticamente que se trata de un proyecto web:</p>
+            <ol style="padding-left: 1.2rem; line-height: 1.6;">
+                <li><strong>Project Name:</strong> Puedes modificar el nombre si deseas personalizar la dirección URL.</li>
+                <li><strong>Framework Preset:</strong> Para proyectos de HTML/CSS puro, déjalo en la opción predeterminada o <em>"Other"</em>.</li>
+                <li>Haz clic en el botón azul <strong>"Deploy"</strong>.</li>
+            </ol>
+        </section>
+
+        <section class="step-card">
+            <span class="step-number">Paso 4</span>
+            <h2>¡Tu página web está en vivo!</h2>
+            <p>En pocos segundos la plataforma compilará tus archivos y mostrará una pantalla de felicitación:</p>
+            <ul style="padding-left: 1.2rem; line-height: 1.6;">
+                <li>Haz clic en la imagen de vista previa o en el botón <strong>"Visit"</strong>.</li>
+                <li>Tu sitio ya estará activo bajo un dominio gratuito como: <code>https://tu-proyecto.vercel.app</code>.</li>
+            </ul>
+        </section>
+
+        <!-- TARJETA DESTACADA -->
+        <section class="step-card" style="border-color: var(--accent-color);">
+            <span class="step-number" style="background-color: #238636; color: #ffffff;">⚡ Ventaja Principal</span>
+            <h2>Despliegue Automático (CI/CD)</h2>
+            <p>Cada vez que hagas un <code>git push origin main</code> desde VS Code a GitHub, <strong>Vercel actualizará tu página pública en tiempo real de forma automática</strong> en cuestión de segundos, sin necesidad de realizar ningún paso manual.</p>
+        </section>
+
+    </div>
+
+</body>
+</html>
