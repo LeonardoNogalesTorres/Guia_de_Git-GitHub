@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resolución de Conflictos en Git (Merge Conflicts)</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <header>
+        <h1>⚔️ Guía de Resolución de Conflictos (Merge Conflicts)</h1>
+        <p>Aprende por qué ocurren, cómo identificarlos en VS Code y los pasos exactos para solucionarlos sin perder código.</p>
+        <a href="index.html" class="btn btn-secondary">← Volver al Inicio</a>
+    </header>
+
+    <div class="container-single">
+
+        <!-- CONCEPTO -->
+        <section class="step-card">
+            <span class="step-number">Concepto Sencillo</span>
+            <h2>¿Por qué ocurre un Conflicto de Fusión?</h2>
+            <p>Imagina que tú y un compañero abren el mismo menú de restaurante en la <strong>misma línea (el precio de la hamburguesa)</strong>:</p>
+            <ul style="padding-left: 1.2rem; line-height: 1.8;">
+                <li>Tú en tu rama cambias el precio a <strong>$10</strong>.</li>
+                <li>Tu compañero en su rama cambia el mismo precio a <strong>$12</strong>.</li>
+            </ul>
+            <p>Al intentar unir ambas ramas con <code>git merge</code>, Git no sabe cuál precio es el correcto y detiene todo diciendo: <em>"Decide tú cuál precio se queda"</em>.</p>
+        </section>
+
+        <!-- ANATOMÍA CON EJEMPLO COMPLETO -->
+        <section class="step-card">
+            <span class="step-number">Anatomía</span>
+            <h2>¿Cómo se ve el conflicto dentro del archivo?</h2>
+            <p>Git encierra la línea en conflicto con marcas especiales para mostrarte exactamente qué cambió en cada lado:</p>
+            
+            <div class="code-block">
+                <span class="comment">&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD (Lo que tienes en TU rama actual 'main')</span>
+                <code>&lt;li class="menu-item"&gt;Hamburguesa Clasica - Precio: $10&lt;/li&gt;</code>
+                <span class="comment">======= (Línea que separa ambas versiones)</span>
+                <code>&lt;li class="menu-item"&gt;Hamburguesa Clasica - Precio: $12&lt;/li&gt;</code>
+                <span class="comment">&gt;&gt;&gt;&gt;&gt;&gt;&gt; feature/actualizar-precios (Lo que viene de la OTRA rama)</span>
+            </div>
+
+            <div style="background-color: var(--code-bg); border: 1px solid var(--border-color); border-radius: 6px; padding: 1rem; margin-top: 1rem;">
+                <p style="margin: 0; font-size: 0.9rem;"><strong>Guía rápida de marcas:</strong></p>
+                <ul style="margin: 0.5rem 0 0 0; padding-left: 1.2rem; font-size: 0.85rem; line-height: 1.6;">
+                    <li><code>&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD</code>: Inicio de TU versión local.</li>
+                    <li><code>=======</code>: Divisoria central.</li>
+                    <li><code>&gt;&gt;&gt;&gt;&gt;&gt;&gt; nombre-rama</code>: Fin de la versión que proviene de la otra rama.</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- PASO 1 -->
+        <section class="step-card">
+            <span class="step-number">Paso 1</span>
+            <h2>Identificar los archivos con problemas</h2>
+            <p>Ejecuta este comando para ver qué archivos tienen choques pendientes:</p>
+            <div class="code-block">
+                <code>git status</code>
+                <span class="comment"># Verás el archivo 'menu.html' listado en rojo bajo "Unmerged paths".</span>
+            </div>
+        </section>
+
+        <!-- PASO 2 CON EJEMPLO PRÁCTICO -->
+        <section class="step-card">
+            <span class="step-number">Paso 2</span>
+            <h2>Resolver el conflicto en VS Code (Ejemplo Práctico)</h2>
+            <p>Abre <code>menu.html</code> en Visual Studio Code. Arriba de las marcas verás 4 botones interactivos de clic rápido:</p>
+            
+            <div style="display: flex; flex-direction: column; gap: 1rem; margin-top: 1rem;">
+                
+                <div class="card" style="margin-bottom: 0;">
+                    <h3 style="color: #79c0ff; font-size: 0.95rem; margin-top: 0;">1. Accept Current Change (Aceptar tu cambio)</h3>
+                    <p style="font-size: 0.85rem; margin-bottom: 0.5rem;">Te quedas con tu precio ($10). El resultado final automático será:</p>
+                    <div class="code-block">
+                        <code>&lt;li class="menu-item"&gt;Hamburguesa Clasica - Precio: $10&lt;/li&gt;</code>
+                    </div>
+                </div>
+
+                <div class="card" style="margin-bottom: 0;">
+                    <h3 style="color: #79c0ff; font-size: 0.95rem; margin-top: 0;">2. Accept Incoming Change (Aceptar el cambio entrante)</h3>
+                    <p style="font-size: 0.85rem; margin-bottom: 0.5rem;">Te quedas con el precio de la otra rama ($12). El resultado final automático será:</p>
+                    <div class="code-block">
+                        <code>&lt;li class="menu-item"&gt;Hamburguesa Clasica - Precio: $12&lt;/li&gt;</code>
+                    </div>
+                </div>
+
+                <div class="card" style="margin-bottom: 0;">
+                    <h3 style="color: #79c0ff; font-size: 0.95rem; margin-top: 0;">3. Edición Manual (La mejor opción si acuerdan una oferta)</h3>
+                    <p style="font-size: 0.85rem; margin-bottom: 0.5rem;">Borras manualmente las marcas de Git (<code>&lt;&lt;&lt;</code>, <code>===</code>, <code>&gt;&gt;&gt;</code>) y dejas el texto acordado, por ejemplo, un precio intermedio ($11):</p>
+                    <div class="code-block">
+                        <code>&lt;li class="menu-item"&gt;Hamburguesa Clasica - Oferta: $11&lt;/li&gt;</code>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- PASO 3 -->
+        <section class="step-card">
+            <span class="step-number">Paso 3</span>
+            <h2>Guardar y finalizar la Fusión</h2>
+            <p>Una vez resuelto el texto y borradas las marcas de Git en el archivo, guarda el archivo en VS Code y ejecuta:</p>
+            <div class="code-block">
+                <code>git add menu.html</code>
+                <span class="comment"># Le confirmas a Git que ya solucionaste el conflicto de este archivo.</span>
+                <code>git commit -m "Fix: Se define el precio final de la hamburguesa en $11"</code>
+                <span class="comment"># Cierras el proceso de fusión registrando el cambio definitivo.</span>
+                <code>git push origin main</code>
+                <span class="comment"># Subes la solución limpia a GitHub.</span>
+            </div>
+        </section>
+
+        <!-- BOTÓN DE EMERGENCIA -->
+        <section class="step-card" style="border-color: #d29922;">
+            <span class="step-number" style="background-color: #d29922; color: #000;">⚠️ Botón de Pánico</span>
+            <h2>¿Quieres cancelar y volver atrás?</h2>
+            <p>Si te confundiste editando y prefieres deshacer el intento de merge para empezar de nuevo sin romper nada:</p>
+            <div class="code-block">
+                <code>git merge --abort</code>
+                <span class="comment"># Cancela el merge y deja tus archivos limpios tal como estaban antes del choque.</span>
+            </div>
+        </section>
+
+    </div>
+
+</body>
+</html>

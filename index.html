@@ -1,129 +1,128 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Guía Rápida de Git & GitHub</title>
+    <title>Historia y Fundamentos: Git, GitHub y GitLab</title>
     <link rel="stylesheet" href="styles.css">
 </head>
-
 <body>
 
     <header>
-        <h1>Guía Esencial de Git & GitHub</h1>
-        <p>Aprende los comandos fundamentales para gestionar tus proyectos y ramas.</p>
-
-        <!-- Nuevos botones de navegación -->
+        <h1>Historia y Fundamentos de Git, GitHub y GitLab</h1>
+        <p>Aprende qué son, cómo nacieron, en qué se diferencian y cuándo utilizar cada uno.</p>
+        
+        <!-- Navegación a las guías prácticas del sitio -->
         <div class="header-nav">
             <a href="comandos.html" class="btn btn-primary">📖 Diccionario de Comandos</a>
-            <a href="clone-y-subir.html" class="btn btn-secondary">🚀 Guía: Clone a Push & Pull</a>
-            <a href="crear-y-subir.html" class="btn btn-secondary">💻 Crear en PC y Subir a GitHub</a>
-            <a href="despliegue-vercel.html" class="btn btn-secondary">🚀 Publicar Web en Vercel.app (Opcional)</a>
+            <a href="crear-y-subir.html" class="btn btn-secondary">💻 Crear en PC y Subir</a>
+            <a href="clone-y-subir.html" class="btn btn-secondary">🚀 Clonar, Ramas y Pull Request</a>
+            <a href="conflictos-merge.html" class="btn btn-secondary">⚔️ Resolver Conflictos (Merge)</a>
+            <a href="despliegue-vercel.html" class="btn btn-secondary">🌐 Publicar en Vercel</a>
         </div>
     </header>
 
-    <div class="container">
-        <!-- Navegación lateral -->
-        <nav class="sidebar">
-            <ul>
-                <li><a href="#instalacion">1. Configuración Inicial</a></li>
-                <li><a href="#flujo-basico">2. Flujo Básico</a></li>
-                <li><a href="#ramas">3. Manejo de Ramas (Branches)</a></li>
-                <li><a href="#remote">4. Conectar con GitHub</a></li>
-            </ul>
-        </nav>
+    <div class="container-single">
 
-        <!-- Contenido principal -->
-        <main class="content">
+        <!-- SECCIÓN 1: HISTORIA Y DEFINICIONES -->
+        <section>
+            <h2 style="color: var(--accent-color); border-bottom: 1px solid var(--border-color); padding-bottom: 0.5rem;">
+                📜 1. Historia y ¿Qué es cada uno?
+            </h2>
 
-            <section id="instalacion">
-                <h2>1. Configuración Inicial</h2>
-                <p>Lo primero que debes hacer tras instalar Git es identificar tu usuario y correo:</p>
-                <div class="code-block">
-                    <code>git config --global user.name "Tu Nombre"</code>
-                    <code>git config --global user.email "tu@email.com"</code>
-                </div>
-            </section>
+            <div class="card">
+                <h3>🛠️ Git (2005)</h3>
+                <p><strong>¿Qué es?</strong> Es un sistema de control de versiones distribuido gratuito y de código abierto. Funciona de manera 100% local en tu computadora y no requiere internet para gestionar el historial de cambios de un proyecto.</p>
+                <p><strong>Historia:</strong> Fue creado en 2005 por <strong>Linus Torvalds</strong> (el mismo creador del kernel de Linux). Nació por la necesidad urgente de encontrar una herramienta rápida, descentralizada y segura para coordinar el desarrollo del código fuente de Linux, luego de que perdieran la licencia gratuita de la herramienta comercial que usaban anteriormente (BitKeeper).</p>
+            </div>
 
-            <section id="flujo-basico">
-                <h2>2. Flujo de Trabajo Básico</h2>
-                <p>Pasos cotidianos para guardar cambios localmente:</p>
+            <div class="card">
+                <h3>🐙 GitHub (2008)</h3>
+                <p><strong>¿Qué es?</strong> Es una plataforma de alojamiento en la nube para repositorios de Git. Añade una interfaz web amigable, herramientas de gestión de proyectos, integraciones y una red social para desarrolladores.</p>
+                <p><strong>Historia:</strong> Fundado en 2008 por Tom Preston-Werner, Chris Wanstrath y PJ Hyett. Revolucionó el desarrollo colaborativo introduciendo el concepto de <em>Pull Request</em> y la posibilidad de explorar proyectos de código abierto fácilmente. En 2018 fue adquirida por Microsoft por 7,500 millones de dólares.</p>
+            </div>
 
-                <div class="card">
-                    <h3>Inicializar un proyecto</h3>
-                    <div class="code-block"><code>git init</code></div>
-                </div>
+            <div class="card">
+                <h3>🦊 GitLab (2011) - Datos Curiosos</h3>
+                <p><strong>¿Qué es?</strong> Una plataforma integral para todo el ciclo de vida del desarrollo de software (DevOps), que incluye alojamiento Git, CI/CD nativo, seguridad y gestión de proyectos en un solo lugar.</p>
+                <p><strong>Historia y Datos Curiosos:</strong> 
+                    <ul>
+                        <li>Fue creado en Ucrania en 2011 por <strong>Dmitriy Zaporozhets</strong> y <strong>Valery Sizov</strong> desde su casa (Zaporozhets programaba a veces desde un departamento sin electricidad constante).</li>
+                        <li>Nació como un proyecto de código abierto totalmente gratuito porque los creadores consideraban que las alternativas del momento eran demasiado costosas o limitadas.</li>
+                        <li>GitLab opera como una empresa 100% remota sin oficinas físicas principales, con colaboradores distribuidos en más de 60 países.</li>
+                        <li>Lanzó su propia oferta pública de venta (salida a la bolsa) en NASDAQ en 2021.</li>
+                    </ul>
+                </p>
+            </div>
+        </section>
 
-                <div class="card">
-                    <h3>Guardar cambios (Staging & Commit)</h3>
-                    <div class="code-block">
-                        <code>git add .</code>
-                        <span class="comment"># Prepara todos los archivos modificados</span>
-                        <code>git commit -m "Mensaje descriptivo del cambio"</code>
-                        <span class="comment"># Guarda una foto del proyecto</span>
-                    </div>
-                </div>
+        <!-- SECCIÓN 2: TABLA COMPARATIVA -->
+        <section style="margin-top: 3rem;">
+            <h2 style="color: var(--accent-color); border-bottom: 1px solid var(--border-color); padding-bottom: 0.5rem;">
+                ⚖️ 2. Diferencias Clave
+            </h2>
 
-                <div class="card">
-                    <h3>Verificar el estado</h3>
-                    <div class="code-block"><code>git status</code></div>
-                </div>
-            </section>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Característica</th>
+                        <th>Git</th>
+                        <th>GitHub</th>
+                        <th>GitLab</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Tipo</strong></td>
+                        <td>Software / Herramienta de consola</td>
+                        <td>Plataforma Web (SaaS)</td>
+                        <td>Plataforma Web (SaaS y Autoalojado)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Entorno</strong></td>
+                        <td>Local (Tu computadora)</td>
+                        <td>Servidor en la nube (Microsoft)</td>
+                        <td>Servidor en la nube o servidor propio</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Enfoque principal</strong></td>
+                        <td>Control de versiones de código</td>
+                        <td>Colaboración social y Open Source</td>
+                        <td>DevOps integral y automatización (CI/CD)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Código Abierto</strong></td>
+                        <td>Sí (GPL v2)</td>
+                        <td>Propietario (Gratis para uso general)</td>
+                        <td>Núcleo Open Source (Edición Community)</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
 
-            <section id="ramas">
-                <h2>3. Manejo de Ramas (Branches)</h2>
-                <p>Las ramas te permiten trabajar en nuevas funciones sin alterar el código principal
-                    (<code>main</code>).</p>
+        <!-- SECCIÓN 3: CASOS DE USO RECOMENDADOS -->
+        <section style="margin-top: 3rem;">
+            <h2 style="color: var(--accent-color); border-bottom: 1px solid var(--border-color); padding-bottom: 0.5rem;">
+                🎯 3. ¿Para qué casos sirve cada uno?
+            </h2>
 
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Acción</th>
-                            <th>Comando</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>Crear una nueva rama</td>
-                            <td><code>git branch nombre-rama</code></td>
-                        </tr>
-                        <tr>
-                            <td>Cambiar a una rama</td>
-                            <td><code>git switch nombre-rama</code></td>
-                        </tr>
-                        <tr>
-                            <td>Crear y cambiar a la vez</td>
-                            <td><code>git checkout -b nombre-rama</code></td>
-                        </tr>
-                        <tr>
-                            <td>Fusionar rama actual con otra</td>
-                            <td><code>git merge nombre-rama</code></td>
-                        </tr>
-                        <tr>
-                            <td>Eliminar una rama</td>
-                            <td><code>git branch -d nombre-rama</code></td>
-                        </tr>
-                    </tbody>
-                </table>
-            </section>
+            <div class="card">
+                <h3>¿Cuándo basta usar solo Git?</h3>
+                <p>Cuando trabajas en proyectos personales locales, prototipos rápidos o tareas universitarias donde solo necesitas guardar el historial de versiones en tu propia máquina sin compartir el código online ni trabajar en equipo.</p>
+            </div>
 
-            <section id="remote">
-                <h2>4. Conectar y Subir a GitHub</h2>
-                <p>Para sincronizar tu repositorio local con la nube:</p>
-                <div class="code-block">
-                    <code>git remote add origin https://github.com/usuario/repositorio.git</code>
-                    <span class="comment"># Vincula el repositorio remoto</span>
-                    <code>git branch -M main</code>
-                    <span class="comment"># Asegura que la rama principal se llame main</span>
-                    <code>git push -u origin main</code>
-                    <span class="comment"># Sube tus cambios por primera vez</span>
-                </div>
-            </section>
+            <div class="card">
+                <h3>¿Cuándo elegir GitHub?</h3>
+                <p>Ideal si buscas visibilidad laboral (crear tu portafolio), publicar proyectos de código abierto (*open source*), integrarte con la comunidad más grande de desarrolladores o desplegar sitios web estáticos sencillos mediante Vercel, Netlify o GitHub Pages.</p>
+            </div>
 
-        </main>
+            <div class="card">
+                <h3>¿Cuándo elegir GitLab?</h3>
+                <p>Ideal para entornos corporativos o proyectos avanzados de ingeniería de software que requieran despliegues automáticos continuos (*CI/CD pipelines*), control estricto de la infraestructura, o cuando la empresa prefiera instalar el servidor de Git en sus propias computadoras físicas por motivos de privacidad/seguridad.</p>
+            </div>
+        </section>
+
     </div>
 
 </body>
-
 </html>
