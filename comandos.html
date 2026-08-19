@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Diccionario Completo de Comandos Git</title>
     <link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
 
     <header>
@@ -19,7 +21,7 @@
         <!-- 1. CONFIGURACIÓN -->
         <section>
             <h2>⚙️ 1. Configuración e Identidad</h2>
-            
+
             <div class="card">
                 <h3>Establecer usuario y correo global</h3>
                 <div class="code-block">
@@ -183,11 +185,13 @@
                 <h3>Descargar y subir datos</h3>
                 <div class="code-block">
                     <code>git fetch origin</code>
-                    <span class="comment"># Descarga la información del remoto sin modificar tus archivos locales.</span>
+                    <span class="comment"># Descarga la información del remoto sin modificar tus archivos
+                        locales.</span>
                     <code>git pull origin main</code>
                     <span class="comment"># Descarga y fusiona los cambios remotos en tu rama actual.</span>
                     <code>git pull --rebase origin main</code>
-                    <span class="comment"># Descarga y reordena tus avances sobre la versión más reciente del servidor.</span>
+                    <span class="comment"># Descarga y reordena tus avances sobre la versión más reciente del
+                        servidor.</span>
                     <code>git push -u origin main</code>
                     <span class="comment"># Sube tus cambios y establece el rastreo por defecto.</span>
                     <code>git push origin --delete nombre-rama</code>
@@ -237,9 +241,11 @@
                 <h3>Descartar y restaurar cambios</h3>
                 <div class="code-block">
                     <code>git restore archivo.html</code>
-                    <span class="comment"># Restaura un archivo al estado del último commit (borra cambios locales).</span>
+                    <span class="comment"># Restaura un archivo al estado del último commit (borra cambios
+                        locales).</span>
                     <code>git restore --staged archivo.html</code>
-                    <span class="comment"># Remueve el archivo del área de staging pero conserva tus modificaciones.</span>
+                    <span class="comment"># Remueve el archivo del área de staging pero conserva tus
+                        modificaciones.</span>
                 </div>
             </div>
 
@@ -251,9 +257,11 @@
                     <code>git reset --soft HEAD~1</code>
                     <span class="comment"># Deshace el último commit devolviendo los cambios al área de staging.</span>
                     <code>git reset --hard HEAD~1</code>
-                    <span class="comment"># Peligro: Deshace el último commit y elimina todos los cambios de código.</span>
+                    <span class="comment"># Peligro: Deshace el último commit y elimina todos los cambios de
+                        código.</span>
                     <code>git revert ID_COMMIT</code>
-                    <span class="comment"># Crea un nuevo commit que deshace exactamente lo hecho en un commit anterior.</span>
+                    <span class="comment"># Crea un nuevo commit que deshace exactamente lo hecho en un commit
+                        anterior.</span>
                 </div>
             </div>
         </section>
@@ -266,7 +274,8 @@
                 <h3>Guardado temporal (Stash)</h3>
                 <div class="code-block">
                     <code>git stash</code>
-                    <span class="comment"># Guarda temporalmente cambios no confirmados para limpiar el espacio de trabajo.</span>
+                    <span class="comment"># Guarda temporalmente cambios no confirmados para limpiar el espacio de
+                        trabajo.</span>
                     <code>git stash save "Mensaje opcional"</code>
                     <span class="comment"># Guarda con una descripción personalizada.</span>
                     <code>git stash list</code>
@@ -292,12 +301,14 @@
                 <h3>Registro de acciones avanzadas (Reflog)</h3>
                 <div class="code-block">
                     <code>git reflog</code>
-                    <span class="comment"># Muestra el historial completo de acciones del HEAD. Útil para recuperar commits o ramas borradas por error.</span>
+                    <span class="comment"># Muestra el historial completo de acciones del HEAD. Útil para recuperar
+                        commits o ramas borradas por error.</span>
                 </div>
             </div>
         </section>
 
     </div>
-
+    <script src="script.js"></script>
 </body>
+
 </html>

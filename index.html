@@ -1,19 +1,22 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Historia y Fundamentos: Git, GitHub y GitLab</title>
     <link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
 
     <header>
         <h1>Historia y Fundamentos de Git, GitHub y GitLab</h1>
         <p>Aprende qué son, cómo nacieron, en qué se diferencian y cuándo utilizar cada uno.</p>
-        
+
         <!-- Navegación a las guías prácticas del sitio -->
         <div class="header-nav">
+            <a href="generador.html" class="btn btn-primary">⚡ Generador de Comandos</a>
             <a href="comandos.html" class="btn btn-primary">📖 Diccionario de Comandos</a>
             <a href="crear-y-subir.html" class="btn btn-secondary">💻 Crear en PC y Subir</a>
             <a href="clone-y-subir.html" class="btn btn-secondary">🚀 Clonar, Ramas y Pull Request</a>
@@ -26,39 +29,57 @@
 
         <!-- SECCIÓN 1: HISTORIA Y DEFINICIONES -->
         <section>
-            <h2 style="color: var(--accent-color); border-bottom: 1px solid var(--border-color); padding-bottom: 0.5rem;">
+            <h2
+                style="color: var(--accent-color); border-bottom: 1px solid var(--border-color); padding-bottom: 0.5rem;">
                 📜 1. Historia y ¿Qué es cada uno?
             </h2>
 
             <div class="card">
                 <h3>🛠️ Git (2005)</h3>
-                <p><strong>¿Qué es?</strong> Es un sistema de control de versiones distribuido gratuito y de código abierto. Funciona de manera 100% local en tu computadora y no requiere internet para gestionar el historial de cambios de un proyecto.</p>
-                <p><strong>Historia:</strong> Fue creado en 2005 por <strong>Linus Torvalds</strong> (el mismo creador del kernel de Linux). Nació por la necesidad urgente de encontrar una herramienta rápida, descentralizada y segura para coordinar el desarrollo del código fuente de Linux, luego de que perdieran la licencia gratuita de la herramienta comercial que usaban anteriormente (BitKeeper).</p>
+                <p><strong>¿Qué es?</strong> Es un sistema de control de versiones distribuido gratuito y de código
+                    abierto. Funciona de manera 100% local en tu computadora y no requiere internet para gestionar el
+                    historial de cambios de un proyecto.</p>
+                <p><strong>Historia:</strong> Fue creado en 2005 por <strong>Linus Torvalds</strong> (el mismo creador
+                    del kernel de Linux). Nació por la necesidad urgente de encontrar una herramienta rápida,
+                    descentralizada y segura para coordinar el desarrollo del código fuente de Linux, luego de que
+                    perdieran la licencia gratuita de la herramienta comercial que usaban anteriormente (BitKeeper).</p>
             </div>
 
             <div class="card">
                 <h3>🐙 GitHub (2008)</h3>
-                <p><strong>¿Qué es?</strong> Es una plataforma de alojamiento en la nube para repositorios de Git. Añade una interfaz web amigable, herramientas de gestión de proyectos, integraciones y una red social para desarrolladores.</p>
-                <p><strong>Historia:</strong> Fundado en 2008 por Tom Preston-Werner, Chris Wanstrath y PJ Hyett. Revolucionó el desarrollo colaborativo introduciendo el concepto de <em>Pull Request</em> y la posibilidad de explorar proyectos de código abierto fácilmente. En 2018 fue adquirida por Microsoft por 7,500 millones de dólares.</p>
+                <p><strong>¿Qué es?</strong> Es una plataforma de alojamiento en la nube para repositorios de Git. Añade
+                    una interfaz web amigable, herramientas de gestión de proyectos, integraciones y una red social para
+                    desarrolladores.</p>
+                <p><strong>Historia:</strong> Fundado en 2008 por Tom Preston-Werner, Chris Wanstrath y PJ Hyett.
+                    Revolucionó el desarrollo colaborativo introduciendo el concepto de <em>Pull Request</em> y la
+                    posibilidad de explorar proyectos de código abierto fácilmente. En 2018 fue adquirida por Microsoft
+                    por 7,500 millones de dólares.</p>
             </div>
 
             <div class="card">
                 <h3>🦊 GitLab (2011) - Datos Curiosos</h3>
-                <p><strong>¿Qué es?</strong> Una plataforma integral para todo el ciclo de vida del desarrollo de software (DevOps), que incluye alojamiento Git, CI/CD nativo, seguridad y gestión de proyectos en un solo lugar.</p>
-                <p><strong>Historia y Datos Curiosos:</strong> 
-                    <ul>
-                        <li>Fue creado en Ucrania en 2011 por <strong>Dmitriy Zaporozhets</strong> y <strong>Valery Sizov</strong> desde su casa (Zaporozhets programaba a veces desde un departamento sin electricidad constante).</li>
-                        <li>Nació como un proyecto de código abierto totalmente gratuito porque los creadores consideraban que las alternativas del momento eran demasiado costosas o limitadas.</li>
-                        <li>GitLab opera como una empresa 100% remota sin oficinas físicas principales, con colaboradores distribuidos en más de 60 países.</li>
-                        <li>Lanzó su propia oferta pública de venta (salida a la bolsa) en NASDAQ en 2021.</li>
-                    </ul>
+                <p><strong>¿Qué es?</strong> Una plataforma integral para todo el ciclo de vida del desarrollo de
+                    software (DevOps), que incluye alojamiento Git, CI/CD nativo, seguridad y gestión de proyectos en un
+                    solo lugar.</p>
+                <p><strong>Historia y Datos Curiosos:</strong>
+                <ul>
+                    <li>Fue creado en Ucrania en 2011 por <strong>Dmitriy Zaporozhets</strong> y <strong>Valery
+                            Sizov</strong> desde su casa (Zaporozhets programaba a veces desde un departamento sin
+                        electricidad constante).</li>
+                    <li>Nació como un proyecto de código abierto totalmente gratuito porque los creadores consideraban
+                        que las alternativas del momento eran demasiado costosas o limitadas.</li>
+                    <li>GitLab opera como una empresa 100% remota sin oficinas físicas principales, con colaboradores
+                        distribuidos en más de 60 países.</li>
+                    <li>Lanzó su propia oferta pública de venta (salida a la bolsa) en NASDAQ en 2021.</li>
+                </ul>
                 </p>
             </div>
         </section>
 
         <!-- SECCIÓN 2: TABLA COMPARATIVA -->
         <section style="margin-top: 3rem;">
-            <h2 style="color: var(--accent-color); border-bottom: 1px solid var(--border-color); padding-bottom: 0.5rem;">
+            <h2
+                style="color: var(--accent-color); border-bottom: 1px solid var(--border-color); padding-bottom: 0.5rem;">
                 ⚖️ 2. Diferencias Clave
             </h2>
 
@@ -102,27 +123,35 @@
 
         <!-- SECCIÓN 3: CASOS DE USO RECOMENDADOS -->
         <section style="margin-top: 3rem;">
-            <h2 style="color: var(--accent-color); border-bottom: 1px solid var(--border-color); padding-bottom: 0.5rem;">
+            <h2
+                style="color: var(--accent-color); border-bottom: 1px solid var(--border-color); padding-bottom: 0.5rem;">
                 🎯 3. ¿Para qué casos sirve cada uno?
             </h2>
 
             <div class="card">
                 <h3>¿Cuándo basta usar solo Git?</h3>
-                <p>Cuando trabajas en proyectos personales locales, prototipos rápidos o tareas universitarias donde solo necesitas guardar el historial de versiones en tu propia máquina sin compartir el código online ni trabajar en equipo.</p>
+                <p>Cuando trabajas en proyectos personales locales, prototipos rápidos o tareas universitarias donde
+                    solo necesitas guardar el historial de versiones en tu propia máquina sin compartir el código online
+                    ni trabajar en equipo.</p>
             </div>
 
             <div class="card">
                 <h3>¿Cuándo elegir GitHub?</h3>
-                <p>Ideal si buscas visibilidad laboral (crear tu portafolio), publicar proyectos de código abierto (*open source*), integrarte con la comunidad más grande de desarrolladores o desplegar sitios web estáticos sencillos mediante Vercel, Netlify o GitHub Pages.</p>
+                <p>Ideal si buscas visibilidad laboral (crear tu portafolio), publicar proyectos de código abierto
+                    (*open source*), integrarte con la comunidad más grande de desarrolladores o desplegar sitios web
+                    estáticos sencillos mediante Vercel, Netlify o GitHub Pages.</p>
             </div>
 
             <div class="card">
                 <h3>¿Cuándo elegir GitLab?</h3>
-                <p>Ideal para entornos corporativos o proyectos avanzados de ingeniería de software que requieran despliegues automáticos continuos (*CI/CD pipelines*), control estricto de la infraestructura, o cuando la empresa prefiera instalar el servidor de Git en sus propias computadoras físicas por motivos de privacidad/seguridad.</p>
+                <p>Ideal para entornos corporativos o proyectos avanzados de ingeniería de software que requieran
+                    despliegues automáticos continuos (*CI/CD pipelines*), control estricto de la infraestructura, o
+                    cuando la empresa prefiera instalar el servidor de Git en sus propias computadoras físicas por
+                    motivos de privacidad/seguridad.</p>
             </div>
         </section>
 
     </div>
-
 </body>
+
 </html>

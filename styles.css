@@ -178,3 +178,101 @@ th {
     font-size: 0.8rem;
     text-transform: uppercase;
 }
+
+/* Estilos para el botón de copia automático en .code-block */
+.code-block {
+    position: relative; /* Necesario para posicionar el botón de forma absoluta */
+    padding-right: 5rem !important; /* Deja espacio para que el botón no tape texto largo */
+}
+
+.auto-copy-btn {
+    position: absolute;
+    top: 0.6rem;
+    right: 0.6rem;
+    background-color: var(--border-color);
+    color: var(--text-color);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 4px;
+    padding: 0.3rem 0.65rem;
+    font-size: 0.75rem;
+    font-weight: 600;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: background-color 0.2s ease, border-color 0.2s ease, transform 0.1s ease;
+    user-select: none;
+}
+
+.auto-copy-btn:hover {
+    background-color: #484f58;
+    border-color: var(--accent-color);
+}
+
+.auto-copy-btn:active {
+    transform: scale(0.95);
+}
+
+.auto-copy-btn.copied {
+    background-color: #238636;
+    color: #ffffff;
+    border-color: #2ea043;
+}
+
+/* Transformación de los bloques de código al estilo del generador */
+.code-block {
+    background-color: transparent !important;
+    border: none !important;
+    padding: 0 !important;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.command-item {
+    background-color: var(--code-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    padding: 0.8rem 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+}
+
+.command-details {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+}
+
+.command-details code {
+    color: #79c0ff;
+    font-family: monospace;
+    font-size: 0.95rem;
+}
+
+.command-details .comment {
+    color: #8b949e;
+    font-size: 0.85rem;
+    user-select: none;
+}
+
+.single-copy-btn {
+    background-color: var(--border-color);
+    color: var(--text-color);
+    border: none;
+    border-radius: 4px;
+    padding: 0.4rem 0.8rem;
+    font-size: 0.8rem;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: background-color 0.2s ease;
+}
+
+.single-copy-btn:hover {
+    background-color: #484f58;
+}
+
+.single-copy-btn.copied {
+    background-color: #238636;
+    color: #ffffff;
+}

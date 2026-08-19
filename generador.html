@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generador Interactivo de Comandos Git</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .generator-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+            margin-top: 1rem;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .form-group label {
+            font-weight: 600;
+            color: var(--accent-color);
+            font-size: 0.9rem;
+        }
+
+        .form-control {
+            background-color: var(--code-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            padding: 0.75rem;
+            color: var(--text-color);
+            font-size: 0.95rem;
+            outline: none;
+            transition: border-color 0.2s ease;
+        }
+
+        /* Estilo para campos de ejemplo como texto normal sin cursor de prohibido */
+        .form-control[readonly] {
+            color: #8b949e;
+            font-style: italic;
+            cursor: text; /* Muestra el cursor normal de texto, sin la X */
+            background-color: #12171f;
+        }
+
+        /* Lista de comandos */
+        .command-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .command-item {
+            background-color: var(--code-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            padding: 0.8rem 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .command-details {
+            display: flex;
+            flex-direction: column;
+            gap: 0.3rem;
+        }
+
+        .command-details code {
+            color: #79c0ff;
+            font-family: monospace;
+            font-size: 0.95rem;
+        }
+
+        .command-details .comment {
+            color: #8b949e;
+            font-size: 0.85rem;
+            user-select: none;
+        }
+
+        .single-copy-btn {
+            background-color: var(--border-color);
+            color: var(--text-color);
+            border: none;
+            border-radius: 4px;
+            padding: 0.4rem 0.8rem;
+            font-size: 0.8rem;
+            cursor: pointer;
+            white-space: nowrap;
+            transition: background-color 0.2s ease;
+        }
+
+        .single-copy-btn:hover {
+            background-color: #484f58;
+        }
+
+        .single-copy-btn.copied {
+            background-color: #238636;
+            color: #ffffff;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>⚡ Generador Interactivo de Comandos</h1>
+        <p>Selecciona tu flujo de trabajo y copia la sintaxis limpia de cada comando.</p>
+        <a href="index.html" class="btn btn-secondary">← Volver al Inicio</a>
+    </header>
+
+    <div class="container-single">
+
+        <section class="step-card">
+            <span class="step-number">Configurador</span>
+            <h2>Parámetros del Proyecto</h2>
+            
+            <div class="generator-grid">
+                
+                <!-- Selector de Flujo -->
+                <div class="form-group">
+                    <label for="flowSelect">¿Qué tarea deseas realizar?</label>
+                    <select id="flowSelect" class="form-control" onchange="updateGenerator()">
+                        <option value="init">Crear nuevo proyecto local y subir a GitHub por primera vez</option>
+                        <option value="branch">Crear nueva rama, avanzar y subir con Pull Request</option>
+                        <option value="clone">Clonar repositorio existente y ponerme a trabajar</option>
+                        <option value="quick-commit">Guardar cambios rápidos (Add + Commit + Push en main)</option>
+                    </select>
+                </div>
+
+                <!-- Mensaje de Commit (Texto Normal) -->
+                <div class="form-group" id="groupCommit">
+                    <label>Mensaje del Commit (Ejemplo)</label>
+                    <input type="text" id="commitMsg" class="form-control" value="Se añade nueva funcionalidad" readonly>
+                </div>
+
+                <!-- Nombre de la Rama (Texto Normal) -->
+                <div class="form-group" id="groupBranch" style="display: none;">
+                    <label>Nombre de la Rama (Ejemplo)</label>
+                    <input type="text" id="branchName" class="form-control" value="feature/nueva-vista" readonly>
+                </div>
+
+                <!-- URL del Repositorio (Texto Normal) -->
+                <div class="form-group" id="groupRepo">
+                    <label>URL del Repositorio (Ejemplo)</label>
+                    <input type="text" id="repoUrl" class="form-control" value="https://github.com/usuario/mi-proyecto.git" readonly>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- RESULTADOS INDIVIDUALES -->
+        <section class="step-card">
+            <span class="step-number" style="background-color: #238636; color: #fff;">Comandos Listos</span>
+            <h2>Haz clic en "Copiar" para obtener el comando base limpio:</h2>
+
+            <div class="command-list" id="commandOutput">
+                <!-- Se generan dinámicamente con JavaScript -->
+            </div>
+        </section>
+
+    </div>
+
+    <script>
+        function updateGenerator() {
+            const flow = document.getElementById('flowSelect').value;
+            
+            const commitMsg = document.getElementById('commitMsg').value;
+            const branchName = document.getElementById('branchName').value;
+            const repoUrl = document.getElementById('repoUrl').value;
+
+            const groupBranch = document.getElementById('groupBranch');
+            const groupRepo = document.getElementById('groupRepo');
+            const groupCommit = document.getElementById('groupCommit');
+            const output = document.getElementById('commandOutput');
+
+            let commandList = [];
+
+            if (flow === 'init') {
+                groupBranch.style.display = 'none';
+                groupRepo.style.display = 'flex';
+                groupCommit.style.display = 'flex';
+
+                commandList = [
+                    { cmd: 'git init', copyCmd: 'git init', desc: '# Inicializa el repositorio en tu carpeta local' },
+                    { cmd: 'git add .', copyCmd: 'git add .', desc: '# Prepara todos los archivos' },
+                    { cmd: `git commit -m "${commitMsg}"`, copyCmd: 'git commit -m ""', desc: '# Registra el primer commit local' },
+                    { cmd: 'git branch -M main', copyCmd: 'git branch -M main', desc: '# Asegura que la rama principal sea main' },
+                    { cmd: `git remote add origin ${repoUrl}`, copyCmd: 'git remote add origin', desc: '# Vincula tu carpeta local con GitHub' },
+                    { cmd: 'git push -u origin main', copyCmd: 'git push -u origin main', desc: '# Sube tus cambios por primera vez' }
+                ];
+            } 
+            else if (flow === 'branch') {
+                groupBranch.style.display = 'flex';
+                groupRepo.style.display = 'none';
+                groupCommit.style.display = 'flex';
+
+                commandList = [
+                    { cmd: `git switch -c ${branchName}`, copyCmd: 'git switch -c', desc: `# Crea una nueva rama y se cambia a ella` },
+                    { cmd: 'git add .', copyCmd: 'git add .', desc: '# Prepara los cambios realizados' },
+                    { cmd: `git commit -m "${commitMsg}"`, copyCmd: 'git commit -m ""', desc: '# Guarda la instantánea en la rama' },
+                    { cmd: `git push -u origin ${branchName}`, copyCmd: 'git push -u origin', desc: '# Sube la rama a GitHub para abrir el Pull Request' }
+                ];
+            } 
+            else if (flow === 'clone') {
+                groupBranch.style.display = 'none';
+                groupRepo.style.display = 'flex';
+                groupCommit.style.display = 'none';
+
+                const repoParts = repoUrl.split('/');
+                let folderName = repoParts[repoParts.length - 1] || 'mi-proyecto';
+                folderName = folderName.replace('.git', '');
+
+                commandList = [
+                    { cmd: `git clone ${repoUrl}`, copyCmd: 'git clone', desc: '# Clona el proyecto en tu máquina' },
+                    { cmd: `cd ${folderName}`, copyCmd: 'cd', desc: '# Entra a la carpeta descargada' },
+                    { cmd: 'code .', copyCmd: 'code .', desc: '# Abre la carpeta directamente en VS Code' }
+                ];
+            } 
+            else if (flow === 'quick-commit') {
+                groupBranch.style.display = 'none';
+                groupRepo.style.display = 'none';
+                groupCommit.style.display = 'flex';
+
+                commandList = [
+                    { cmd: 'git status', copyCmd: 'git status', desc: '# Revisa los archivos modificados' },
+                    { cmd: 'git add .', copyCmd: 'git add .', desc: '# Prepara todos los cambios' },
+                    { cmd: `git commit -m "${commitMsg}"`, copyCmd: 'git commit -m ""', desc: '# Registra los avances localmente' },
+                    { cmd: 'git push origin main', copyCmd: 'git push origin main', desc: '# Envia la actualización a la rama main de GitHub' }
+                ];
+            }
+
+            // Renderizar la lista con el atributo data-copy con la sintaxis limpia
+            output.innerHTML = commandList.map((item, index) => `
+                <div class="command-item">
+                    <div class="command-details">
+                        <code>${escapeHtml(item.cmd)}</code>
+                        <span class="comment">${escapeHtml(item.desc)}</span>
+                    </div>
+                    <button class="single-copy-btn" data-copy="${escapeHtml(item.copyCmd)}" onclick="copyCleanCommand(this)">Copiar</button>
+                </div>
+            `).join('');
+        }
+
+        function escapeHtml(text) {
+            return text.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
+        }
+
+        function copyCleanCommand(btnEl) {
+            const cleanText = btnEl.getAttribute('data-copy');
+            
+            navigator.clipboard.writeText(cleanText).then(() => {
+                btnEl.innerText = '¡Copiado!';
+                btnEl.classList.add('copied');
+                
+                setTimeout(() => {
+                    btnEl.innerText = 'Copiar';
+                    btnEl.classList.remove('copied');
+                }, 1800);
+            });
+        }
+
+        document.addEventListener('DOMContentLoaded', updateGenerator);
+    </script>
+
+</body>
+</html>

@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Clonar y Subir Avances en Git</title>
     <link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
 
     <header>
@@ -24,7 +26,8 @@
         <section class="step-card">
             <span class="step-number">Paso 1</span>
             <h2>Obtener la URL del Repositorio</h2>
-            <p>Ve al proyecto en GitHub, haz clic en el botón verde <strong>Code</strong> y copia la URL que termina en <code>.git</code> (HTTPS).</p>
+            <p>Ve al proyecto en GitHub, haz clic en el botón verde <strong>Code</strong> y copia la URL que termina en
+                <code>.git</code> (HTTPS).</p>
         </section>
 
         <section class="step-card">
@@ -51,10 +54,12 @@
 
 
         <!-- FASE 2: VARIANTE A (MAIN) -->
-        <h2 style="color: var(--accent-color); border-bottom: 1px solid var(--border-color); padding-bottom: 0.5rem; margin-top: 3rem;">
+        <h2
+            style="color: var(--accent-color); border-bottom: 1px solid var(--border-color); padding-bottom: 0.5rem; margin-top: 3rem;">
             🟢 Variante A: Flujo Directo en 'main' (Flujo Simple)
         </h2>
-        <p style="margin-bottom: 1.5rem; color: #8b949e;">Recomendado para proyectos individuales, tareas personales o entregas rápidas.</p>
+        <p style="margin-bottom: 1.5rem; color: #8b949e;">Recomendado para proyectos individuales, tareas personales o
+            entregas rápidas.</p>
 
         <section class="step-card">
             <span class="step-number">Paso A.1</span>
@@ -92,10 +97,12 @@
 
 
         <!-- FASE 3: VARIANTE B (RAMAS Y PULL REQUEST) -->
-        <h2 style="color: var(--accent-color); border-bottom: 1px solid var(--border-color); padding-bottom: 0.5rem; margin-top: 3rem;">
+        <h2
+            style="color: var(--accent-color); border-bottom: 1px solid var(--border-color); padding-bottom: 0.5rem; margin-top: 3rem;">
             🌿 Variante B: Flujo con Ramas Secundarias y Pull Request
         </h2>
-        <p style="margin-bottom: 1.5rem; color: #8b949e;">Ideal para mantener el código principal intacto hasta revisar los cambios.</p>
+        <p style="margin-bottom: 1.5rem; color: #8b949e;">Ideal para mantener el código principal intacto hasta revisar
+            los cambios.</p>
 
         <section class="step-card">
             <span class="step-number">Paso B.1</span>
@@ -110,11 +117,13 @@
         <section class="step-card">
             <span class="step-number">Paso B.2</span>
             <h2>Guardar avances con Título y Descripción</h2>
-            <p>Puedes estructurar el mensaje para que GitHub extraiga automáticamente el título y cuerpo del Pull Request usando doble <code>-m</code>:</p>
+            <p>Puedes estructurar el mensaje para que GitHub extraiga automáticamente el título y cuerpo del Pull
+                Request usando doble <code>-m</code>:</p>
             <div class="code-block">
                 <code>git add .</code>
                 <code>git commit -m "Se diseña la vista de inicio" -m "Descripción: Se incluyeron botones de navegación, hoja de estilos CSS y responsividad para móviles."</code>
-                <span class="comment"># El primer -m será el Título del PR y el segundo -m la Descripción detallada.</span>
+                <span class="comment"># El primer -m será el Título del PR y el segundo -m la Descripción
+                    detallada.</span>
             </div>
         </section>
 
@@ -132,16 +141,22 @@
             <span class="step-number">Paso B.4</span>
             <h2>Crear el Pull Request (PR)</h2>
             <p>Tienes dos formas de abrir la solicitud de extracción para que el administrador la revise:</p>
-            
-            <h3 style="color: var(--accent-color); font-size: 1rem; margin-top: 1rem;">Opción 1: Desde la Web de GitHub (Recomendado)</h3>
+
+            <h3 style="color: var(--accent-color); font-size: 1rem; margin-top: 1rem;">Opción 1: Desde la Web de GitHub
+                (Recomendado)</h3>
             <ol style="padding-left: 1.2rem; line-height: 1.6;">
-                <li>Entra al repositorio en GitHub. Verás un banner amarillo que dice <strong>"Compare & pull request"</strong>. Haz clic en él.</li>
-                <li>Escribe el <strong>Title</strong> (Título del cambio) y en el cuadro grande la <strong>Description</strong> (Explicación de lo que hiciste, pruebas realizadas o notas al administrador).</li>
+                <li>Entra al repositorio en GitHub. Verás un banner amarillo que dice <strong>"Compare & pull
+                        request"</strong>. Haz clic en él.</li>
+                <li>Escribe el <strong>Title</strong> (Título del cambio) y en el cuadro grande la
+                    <strong>Description</strong> (Explicación de lo que hiciste, pruebas realizadas o notas al
+                    administrador).</li>
                 <li>Haz clic en el botón verde <strong>"Create pull request"</strong>.</li>
             </ol>
 
-            <h3 style="color: var(--accent-color); font-size: 1rem; margin-top: 1rem;">Opción 2: Desde la Terminal (GitHub CLI)</h3>
-            <p>Si tienes instalada la herramienta <code>gh</code> (GitHub CLI), puedes hacer todo sin salir de la consola:</p>
+            <h3 style="color: var(--accent-color); font-size: 1rem; margin-top: 1rem;">Opción 2: Desde la Terminal
+                (GitHub CLI)</h3>
+            <p>Si tienes instalada la herramienta <code>gh</code> (GitHub CLI), puedes hacer todo sin salir de la
+                consola:</p>
             <div class="code-block">
                 <code>gh pr create --title "Se diseña la vista de inicio" --body "Se incluyeron botones de navegación y responsive design."</code>
                 <span class="comment"># Crea el PR directamente asignando Título y Descripción por comandos.</span>
@@ -154,9 +169,11 @@
             <p>Una vez revisados los cambios, el Pull Request se integra en la rama principal:</p>
 
             <h3 style="color: var(--accent-color); font-size: 1rem; margin-top: 1rem;">Desde la Web de GitHub</h3>
-            <p>El administrador (o tú, si tienes permisos) presiona el botón verde <strong>"Merge pull request"</strong> y luego <strong>"Confirm merge"</strong>.</p>
+            <p>El administrador (o tú, si tienes permisos) presiona el botón verde <strong>"Merge pull request"</strong>
+                y luego <strong>"Confirm merge"</strong>.</p>
 
-            <h3 style="color: var(--accent-color); font-size: 1rem; margin-top: 1rem;">Sincronizar cambios en tu computadora local</h3>
+            <h3 style="color: var(--accent-color); font-size: 1rem; margin-top: 1rem;">Sincronizar cambios en tu
+                computadora local</h3>
             <p>Tras hacer el Merge en GitHub, vuelve a tu terminal para actualizar tu rama <code>main</code> local:</p>
             <div class="code-block">
                 <code>git switch main</code>
@@ -169,6 +186,7 @@
         </section>
 
     </div>
-
+    <script src="script.js"></script>
 </body>
+
 </html>
